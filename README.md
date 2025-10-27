@@ -7,8 +7,8 @@ Funcionalidades da Aplicação:
 [] - O cadastro de uma ORG (organização)
 [] - O login de uma ORG no sistema
 
-[] - Regras de Negócio
-[] - As seguintes condições devem ser implementadas:
+Regras de Negócio
+As seguintes condições devem ser implementadas:
 
 [] - A informação da cidade é obrigatória para listar os pets
 [] - Uma ORG deve, obrigatoriamente, ter um endereço e um número de WhatsApp
