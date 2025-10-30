@@ -1,12 +1,20 @@
-import { Prisma } from "../../generated/client";
-import { Org } from "@/generated/client"
-
+import { Org, Prisma} from "@/generated/client"
 
 export class InMemoryOrgRepository {
      public orgs: Org[] = [];
      
-     async create(data: Prisma.OrgCreateInput) {
-          const org: Org = {
+     async findByEmail(email: string){
+          const org = this.orgs.find((org=> org.email === email))
+
+          if (!org){
+               return null
+          }
+
+          return org
+     }
+
+     async create(data: Prisma.OrgCreateInput): Promise<Org>{
+           const org: Org = {
                id: crypto.randomUUID(),
                email: data.email,
                password_hash: data.password_hash,
@@ -17,5 +25,6 @@ export class InMemoryOrgRepository {
                created_at: new Date(),
           }
           this.orgs.push(org)
+          return org
      }
 }

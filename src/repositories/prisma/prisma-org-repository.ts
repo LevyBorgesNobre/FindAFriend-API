@@ -1,10 +1,10 @@
 import { prisma } from "@/lib/prisma"
-import { Org, Prisma } from "../../generated/client";
+import { Org, Prisma} from "@/generated/client"
 import { OrgsRepository } from "../orgs-repository";
 
 export class PrismaOrgRepository implements OrgsRepository {
-     async create(data: Prisma.OrgCreateInput) {
-    const org = await prisma.org.create({
+  async create(data: Prisma.OrgCreateInput){
+     const org = await prisma.org.create({
         data,
     })
     return org

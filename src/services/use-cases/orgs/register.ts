@@ -1,3 +1,4 @@
+import { Org } from "@/generated/client";
 import { OrgsRepository } from "@/repositories/orgs-repository";
 import { OrgAlreadyExistsError } from "@/services/erros/org-already-exists-error";
 import { hash } from "bcryptjs";
@@ -9,6 +10,10 @@ interface OrgUseCaseRequest {
     phone_number: string;
     city: string;
     State: string
+}
+
+interface OrgUseCaseResponse {
+    org: Org
 }
 
 export class RegisterUseCase{
@@ -25,7 +30,7 @@ async execute({
     address, 
     phone_number, 
     city, 
-    State} : OrgUseCaseRequest){
+    State} : OrgUseCaseRequest): Promise<OrgUseCaseResponse>{
     
     const passwordHash = await hash(password_hash, 6)
 
