@@ -3,7 +3,7 @@ import { OrgsRepository } from "@/repositories/orgs-repository";
 import { OrgInvalidCredentialsError } from "@/services/erros/org-invalid-credentials-error";
 import { compare } from "bcryptjs";
 
-interface OrgUseCaseRequest {
+interface AuthenticateUseCaseRequest {
     email: string;
     password_hash: string;
     address: string;
@@ -12,11 +12,11 @@ interface OrgUseCaseRequest {
     State: string
 }
 
-interface OrgUseCaseResponse {
+interface AuthenticateUseCaseResponse {
     org: Org
 }
 
-export class RegisterUseCase{
+export class AuthenticateUseCase{
 
 constructor(
    private orgsRepostory: OrgsRepository
@@ -27,7 +27,7 @@ constructor(
 async execute({
     email, 
     password_hash, 
-    } : OrgUseCaseRequest): Promise<OrgUseCaseResponse>{
+    } : AuthenticateUseCaseRequest): Promise<AuthenticateUseCaseResponse>{
     
 
     const org = await this.orgsRepostory.findByEmail(email)
