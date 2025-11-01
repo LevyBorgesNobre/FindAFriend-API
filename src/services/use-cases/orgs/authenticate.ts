@@ -6,10 +6,6 @@ import { compare } from "bcryptjs";
 interface AuthenticateUseCaseRequest {
     email: string;
     password_hash: string;
-    address: string;
-    phone_number: string;
-    city: string;
-    State: string
 }
 
 interface AuthenticateUseCaseResponse {
