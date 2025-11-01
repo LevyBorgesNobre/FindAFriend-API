@@ -51,7 +51,7 @@ describe("Authenticate Use Case",()=>{
          ).rejects.toBeInstanceOf(OrgInvalidCredentialsError)
     })
 
-       it('should not be able to authenticate with wrong email', async()=>{
+       it('should not be able to authenticate with wrong password', async()=>{
         await orgsRepository.create({
         email: "johndoe@example.com",
         password_hash: String(hashSync('123456', 6)),
