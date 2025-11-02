@@ -3,6 +3,16 @@ import { Org, Prisma} from "@/generated/client"
 export class InMemoryOrgRepository {
      public orgs: Org[] = [];
      
+    async findById(id: string){
+          const org = this.orgs.find((org=> org.id === id))
+          
+          if(!org){
+               return null
+          }
+
+          return org
+    }
+
      async findByEmail(email: string){
           const org = this.orgs.find((org=> org.email === email))
 
