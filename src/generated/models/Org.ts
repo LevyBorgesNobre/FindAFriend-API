@@ -27,10 +27,9 @@ export type OrgMinAggregateOutputType = {
   id: string | null
   email: string | null
   password_hash: string | null
+  cep: string | null
   address: string | null
   phone_number: string | null
-  city: string | null
-  State: string | null
   created_at: Date | null
 }
 
@@ -38,10 +37,9 @@ export type OrgMaxAggregateOutputType = {
   id: string | null
   email: string | null
   password_hash: string | null
+  cep: string | null
   address: string | null
   phone_number: string | null
-  city: string | null
-  State: string | null
   created_at: Date | null
 }
 
@@ -49,10 +47,9 @@ export type OrgCountAggregateOutputType = {
   id: number
   email: number
   password_hash: number
+  cep: number
   address: number
   phone_number: number
-  city: number
-  State: number
   created_at: number
   _all: number
 }
@@ -62,10 +59,9 @@ export type OrgMinAggregateInputType = {
   id?: true
   email?: true
   password_hash?: true
+  cep?: true
   address?: true
   phone_number?: true
-  city?: true
-  State?: true
   created_at?: true
 }
 
@@ -73,10 +69,9 @@ export type OrgMaxAggregateInputType = {
   id?: true
   email?: true
   password_hash?: true
+  cep?: true
   address?: true
   phone_number?: true
-  city?: true
-  State?: true
   created_at?: true
 }
 
@@ -84,10 +79,9 @@ export type OrgCountAggregateInputType = {
   id?: true
   email?: true
   password_hash?: true
+  cep?: true
   address?: true
   phone_number?: true
-  city?: true
-  State?: true
   created_at?: true
   _all?: true
 }
@@ -168,10 +162,9 @@ export type OrgGroupByOutputType = {
   id: string
   email: string
   password_hash: string
+  cep: string
   address: string
   phone_number: string
-  city: string
-  State: string
   created_at: Date
   _count: OrgCountAggregateOutputType | null
   _min: OrgMinAggregateOutputType | null
@@ -200,10 +193,9 @@ export type OrgWhereInput = {
   id?: Prisma.UuidFilter<"Org"> | string
   email?: Prisma.StringFilter<"Org"> | string
   password_hash?: Prisma.StringFilter<"Org"> | string
+  cep?: Prisma.StringFilter<"Org"> | string
   address?: Prisma.StringFilter<"Org"> | string
   phone_number?: Prisma.StringFilter<"Org"> | string
-  city?: Prisma.StringFilter<"Org"> | string
-  State?: Prisma.StringFilter<"Org"> | string
   created_at?: Prisma.DateTimeFilter<"Org"> | Date | string
   pets?: Prisma.PetListRelationFilter
 }
@@ -212,10 +204,9 @@ export type OrgOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
   password_hash?: Prisma.SortOrder
+  cep?: Prisma.SortOrder
   address?: Prisma.SortOrder
   phone_number?: Prisma.SortOrder
-  city?: Prisma.SortOrder
-  State?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   pets?: Prisma.PetOrderByRelationAggregateInput
 }
@@ -227,10 +218,9 @@ export type OrgWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.OrgWhereInput[]
   NOT?: Prisma.OrgWhereInput | Prisma.OrgWhereInput[]
   password_hash?: Prisma.StringFilter<"Org"> | string
+  cep?: Prisma.StringFilter<"Org"> | string
   address?: Prisma.StringFilter<"Org"> | string
   phone_number?: Prisma.StringFilter<"Org"> | string
-  city?: Prisma.StringFilter<"Org"> | string
-  State?: Prisma.StringFilter<"Org"> | string
   created_at?: Prisma.DateTimeFilter<"Org"> | Date | string
   pets?: Prisma.PetListRelationFilter
 }, "id" | "email">
@@ -239,10 +229,9 @@ export type OrgOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
   password_hash?: Prisma.SortOrder
+  cep?: Prisma.SortOrder
   address?: Prisma.SortOrder
   phone_number?: Prisma.SortOrder
-  city?: Prisma.SortOrder
-  State?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   _count?: Prisma.OrgCountOrderByAggregateInput
   _max?: Prisma.OrgMaxOrderByAggregateInput
@@ -256,10 +245,9 @@ export type OrgScalarWhereWithAggregatesInput = {
   id?: Prisma.UuidWithAggregatesFilter<"Org"> | string
   email?: Prisma.StringWithAggregatesFilter<"Org"> | string
   password_hash?: Prisma.StringWithAggregatesFilter<"Org"> | string
+  cep?: Prisma.StringWithAggregatesFilter<"Org"> | string
   address?: Prisma.StringWithAggregatesFilter<"Org"> | string
   phone_number?: Prisma.StringWithAggregatesFilter<"Org"> | string
-  city?: Prisma.StringWithAggregatesFilter<"Org"> | string
-  State?: Prisma.StringWithAggregatesFilter<"Org"> | string
   created_at?: Prisma.DateTimeWithAggregatesFilter<"Org"> | Date | string
 }
 
@@ -267,10 +255,9 @@ export type OrgCreateInput = {
   id?: string
   email: string
   password_hash: string
+  cep: string
   address: string
   phone_number: string
-  city: string
-  State: string
   created_at?: Date | string
   pets?: Prisma.PetCreateNestedManyWithoutOrgInput
 }
@@ -279,10 +266,9 @@ export type OrgUncheckedCreateInput = {
   id?: string
   email: string
   password_hash: string
+  cep: string
   address: string
   phone_number: string
-  city: string
-  State: string
   created_at?: Date | string
   pets?: Prisma.PetUncheckedCreateNestedManyWithoutOrgInput
 }
@@ -291,10 +277,9 @@ export type OrgUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password_hash?: Prisma.StringFieldUpdateOperationsInput | string
+  cep?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
   phone_number?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  State?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   pets?: Prisma.PetUpdateManyWithoutOrgNestedInput
 }
@@ -303,10 +288,9 @@ export type OrgUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password_hash?: Prisma.StringFieldUpdateOperationsInput | string
+  cep?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
   phone_number?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  State?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   pets?: Prisma.PetUncheckedUpdateManyWithoutOrgNestedInput
 }
@@ -315,10 +299,9 @@ export type OrgCreateManyInput = {
   id?: string
   email: string
   password_hash: string
+  cep: string
   address: string
   phone_number: string
-  city: string
-  State: string
   created_at?: Date | string
 }
 
@@ -326,10 +309,9 @@ export type OrgUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password_hash?: Prisma.StringFieldUpdateOperationsInput | string
+  cep?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
   phone_number?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  State?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -337,10 +319,9 @@ export type OrgUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password_hash?: Prisma.StringFieldUpdateOperationsInput | string
+  cep?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
   phone_number?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  State?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -348,10 +329,9 @@ export type OrgCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
   password_hash?: Prisma.SortOrder
+  cep?: Prisma.SortOrder
   address?: Prisma.SortOrder
   phone_number?: Prisma.SortOrder
-  city?: Prisma.SortOrder
-  State?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
 }
 
@@ -359,10 +339,9 @@ export type OrgMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
   password_hash?: Prisma.SortOrder
+  cep?: Prisma.SortOrder
   address?: Prisma.SortOrder
   phone_number?: Prisma.SortOrder
-  city?: Prisma.SortOrder
-  State?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
 }
 
@@ -370,10 +349,9 @@ export type OrgMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
   password_hash?: Prisma.SortOrder
+  cep?: Prisma.SortOrder
   address?: Prisma.SortOrder
   phone_number?: Prisma.SortOrder
-  city?: Prisma.SortOrder
-  State?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
 }
 
@@ -408,10 +386,9 @@ export type OrgCreateWithoutPetsInput = {
   id?: string
   email: string
   password_hash: string
+  cep: string
   address: string
   phone_number: string
-  city: string
-  State: string
   created_at?: Date | string
 }
 
@@ -419,10 +396,9 @@ export type OrgUncheckedCreateWithoutPetsInput = {
   id?: string
   email: string
   password_hash: string
+  cep: string
   address: string
   phone_number: string
-  city: string
-  State: string
   created_at?: Date | string
 }
 
@@ -446,10 +422,9 @@ export type OrgUpdateWithoutPetsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password_hash?: Prisma.StringFieldUpdateOperationsInput | string
+  cep?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
   phone_number?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  State?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -457,10 +432,9 @@ export type OrgUncheckedUpdateWithoutPetsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password_hash?: Prisma.StringFieldUpdateOperationsInput | string
+  cep?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
   phone_number?: Prisma.StringFieldUpdateOperationsInput | string
-  city?: Prisma.StringFieldUpdateOperationsInput | string
-  State?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -499,10 +473,9 @@ export type OrgSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = ru
   id?: boolean
   email?: boolean
   password_hash?: boolean
+  cep?: boolean
   address?: boolean
   phone_number?: boolean
-  city?: boolean
-  State?: boolean
   created_at?: boolean
   pets?: boolean | Prisma.Org$petsArgs<ExtArgs>
   _count?: boolean | Prisma.OrgCountOutputTypeDefaultArgs<ExtArgs>
@@ -512,10 +485,9 @@ export type OrgSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extension
   id?: boolean
   email?: boolean
   password_hash?: boolean
+  cep?: boolean
   address?: boolean
   phone_number?: boolean
-  city?: boolean
-  State?: boolean
   created_at?: boolean
 }, ExtArgs["result"]["org"]>
 
@@ -523,10 +495,9 @@ export type OrgSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extension
   id?: boolean
   email?: boolean
   password_hash?: boolean
+  cep?: boolean
   address?: boolean
   phone_number?: boolean
-  city?: boolean
-  State?: boolean
   created_at?: boolean
 }, ExtArgs["result"]["org"]>
 
@@ -534,14 +505,13 @@ export type OrgSelectScalar = {
   id?: boolean
   email?: boolean
   password_hash?: boolean
+  cep?: boolean
   address?: boolean
   phone_number?: boolean
-  city?: boolean
-  State?: boolean
   created_at?: boolean
 }
 
-export type OrgOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "password_hash" | "address" | "phone_number" | "city" | "State" | "created_at", ExtArgs["result"]["org"]>
+export type OrgOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "password_hash" | "cep" | "address" | "phone_number" | "created_at", ExtArgs["result"]["org"]>
 export type OrgInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   pets?: boolean | Prisma.Org$petsArgs<ExtArgs>
   _count?: boolean | Prisma.OrgCountOutputTypeDefaultArgs<ExtArgs>
@@ -558,10 +528,9 @@ export type $OrgPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
     id: string
     email: string
     password_hash: string
+    cep: string
     address: string
     phone_number: string
-    city: string
-    State: string
     created_at: Date
   }, ExtArgs["result"]["org"]>
   composites: {}
@@ -990,10 +959,9 @@ export interface OrgFieldRefs {
   readonly id: Prisma.FieldRef<"Org", 'String'>
   readonly email: Prisma.FieldRef<"Org", 'String'>
   readonly password_hash: Prisma.FieldRef<"Org", 'String'>
+  readonly cep: Prisma.FieldRef<"Org", 'String'>
   readonly address: Prisma.FieldRef<"Org", 'String'>
   readonly phone_number: Prisma.FieldRef<"Org", 'String'>
-  readonly city: Prisma.FieldRef<"Org", 'String'>
-  readonly State: Prisma.FieldRef<"Org", 'String'>
   readonly created_at: Prisma.FieldRef<"Org", 'DateTime'>
 }
     

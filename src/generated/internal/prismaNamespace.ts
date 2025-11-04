@@ -601,10 +601,9 @@ export const OrgScalarFieldEnum = {
   id: 'id',
   email: 'email',
   password_hash: 'password_hash',
+  cep: 'cep',
   address: 'address',
   phone_number: 'phone_number',
-  city: 'city',
-  State: 'State',
   created_at: 'created_at'
 } as const
 
@@ -616,6 +615,10 @@ export const PetScalarFieldEnum = {
   name: 'name',
   age: 'age',
   size: 'size',
+  state: 'state',
+  city: 'city',
+  latitude: 'latitude',
+  longitude: 'longitude',
   org_id: 'org_id'
 } as const
 
@@ -669,6 +672,20 @@ export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel
  * Reference to a field of type 'DateTime[]'
  */
 export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Decimal'
+ */
+export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
+    
+
+
+/**
+ * Reference to a field of type 'Decimal[]'
+ */
+export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
     
 
 

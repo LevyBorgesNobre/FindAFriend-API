@@ -12,19 +12,22 @@ model Org {
   id            String   @id @default(uuid()) @db.Uuid
   email         String   @unique
   password_hash String
+  cep           String
   address       String
   phone_number  String
-  city          String
-  State         String
   created_at    DateTime @default(now())
   pets          Pet[]
 }
 
 model Pet {
-  id     String @id @default(uuid()) @db.Uuid
-  name   String
-  age    String
-  size   String
+  id        String @id @default(uuid()) @db.Uuid
+  name      String
+  age       String
+  size      String
+  state     String
+  city      String
+  latitude  Decimal
+  longitude Decimal
   org_id String @db.Uuid
   org    Org    @relation(fields: [org_id], references: [id])
 }

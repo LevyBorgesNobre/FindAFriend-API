@@ -19,8 +19,20 @@ export type PetModel = runtime.Types.Result.DefaultSelection<Prisma.$PetPayload>
 
 export type AggregatePet = {
   _count: PetCountAggregateOutputType | null
+  _avg: PetAvgAggregateOutputType | null
+  _sum: PetSumAggregateOutputType | null
   _min: PetMinAggregateOutputType | null
   _max: PetMaxAggregateOutputType | null
+}
+
+export type PetAvgAggregateOutputType = {
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
+}
+
+export type PetSumAggregateOutputType = {
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
 }
 
 export type PetMinAggregateOutputType = {
@@ -28,6 +40,10 @@ export type PetMinAggregateOutputType = {
   name: string | null
   age: string | null
   size: string | null
+  state: string | null
+  city: string | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
   org_id: string | null
 }
 
@@ -36,6 +52,10 @@ export type PetMaxAggregateOutputType = {
   name: string | null
   age: string | null
   size: string | null
+  state: string | null
+  city: string | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
   org_id: string | null
 }
 
@@ -44,16 +64,34 @@ export type PetCountAggregateOutputType = {
   name: number
   age: number
   size: number
+  state: number
+  city: number
+  latitude: number
+  longitude: number
   org_id: number
   _all: number
 }
 
+
+export type PetAvgAggregateInputType = {
+  latitude?: true
+  longitude?: true
+}
+
+export type PetSumAggregateInputType = {
+  latitude?: true
+  longitude?: true
+}
 
 export type PetMinAggregateInputType = {
   id?: true
   name?: true
   age?: true
   size?: true
+  state?: true
+  city?: true
+  latitude?: true
+  longitude?: true
   org_id?: true
 }
 
@@ -62,6 +100,10 @@ export type PetMaxAggregateInputType = {
   name?: true
   age?: true
   size?: true
+  state?: true
+  city?: true
+  latitude?: true
+  longitude?: true
   org_id?: true
 }
 
@@ -70,6 +112,10 @@ export type PetCountAggregateInputType = {
   name?: true
   age?: true
   size?: true
+  state?: true
+  city?: true
+  latitude?: true
+  longitude?: true
   org_id?: true
   _all?: true
 }
@@ -112,6 +158,18 @@ export type PetAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: PetAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: PetSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: PetMinAggregateInputType
@@ -142,6 +200,8 @@ export type PetGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
   take?: number
   skip?: number
   _count?: PetCountAggregateInputType | true
+  _avg?: PetAvgAggregateInputType
+  _sum?: PetSumAggregateInputType
   _min?: PetMinAggregateInputType
   _max?: PetMaxAggregateInputType
 }
@@ -151,8 +211,14 @@ export type PetGroupByOutputType = {
   name: string
   age: string
   size: string
+  state: string
+  city: string
+  latitude: runtime.Decimal
+  longitude: runtime.Decimal
   org_id: string
   _count: PetCountAggregateOutputType | null
+  _avg: PetAvgAggregateOutputType | null
+  _sum: PetSumAggregateOutputType | null
   _min: PetMinAggregateOutputType | null
   _max: PetMaxAggregateOutputType | null
 }
@@ -180,6 +246,10 @@ export type PetWhereInput = {
   name?: Prisma.StringFilter<"Pet"> | string
   age?: Prisma.StringFilter<"Pet"> | string
   size?: Prisma.StringFilter<"Pet"> | string
+  state?: Prisma.StringFilter<"Pet"> | string
+  city?: Prisma.StringFilter<"Pet"> | string
+  latitude?: Prisma.DecimalFilter<"Pet"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  longitude?: Prisma.DecimalFilter<"Pet"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   org_id?: Prisma.UuidFilter<"Pet"> | string
   org?: Prisma.XOR<Prisma.OrgScalarRelationFilter, Prisma.OrgWhereInput>
 }
@@ -189,6 +259,10 @@ export type PetOrderByWithRelationInput = {
   name?: Prisma.SortOrder
   age?: Prisma.SortOrder
   size?: Prisma.SortOrder
+  state?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
   org_id?: Prisma.SortOrder
   org?: Prisma.OrgOrderByWithRelationInput
 }
@@ -201,6 +275,10 @@ export type PetWhereUniqueInput = Prisma.AtLeast<{
   name?: Prisma.StringFilter<"Pet"> | string
   age?: Prisma.StringFilter<"Pet"> | string
   size?: Prisma.StringFilter<"Pet"> | string
+  state?: Prisma.StringFilter<"Pet"> | string
+  city?: Prisma.StringFilter<"Pet"> | string
+  latitude?: Prisma.DecimalFilter<"Pet"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  longitude?: Prisma.DecimalFilter<"Pet"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   org_id?: Prisma.UuidFilter<"Pet"> | string
   org?: Prisma.XOR<Prisma.OrgScalarRelationFilter, Prisma.OrgWhereInput>
 }, "id">
@@ -210,10 +288,16 @@ export type PetOrderByWithAggregationInput = {
   name?: Prisma.SortOrder
   age?: Prisma.SortOrder
   size?: Prisma.SortOrder
+  state?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
   org_id?: Prisma.SortOrder
   _count?: Prisma.PetCountOrderByAggregateInput
+  _avg?: Prisma.PetAvgOrderByAggregateInput
   _max?: Prisma.PetMaxOrderByAggregateInput
   _min?: Prisma.PetMinOrderByAggregateInput
+  _sum?: Prisma.PetSumOrderByAggregateInput
 }
 
 export type PetScalarWhereWithAggregatesInput = {
@@ -224,6 +308,10 @@ export type PetScalarWhereWithAggregatesInput = {
   name?: Prisma.StringWithAggregatesFilter<"Pet"> | string
   age?: Prisma.StringWithAggregatesFilter<"Pet"> | string
   size?: Prisma.StringWithAggregatesFilter<"Pet"> | string
+  state?: Prisma.StringWithAggregatesFilter<"Pet"> | string
+  city?: Prisma.StringWithAggregatesFilter<"Pet"> | string
+  latitude?: Prisma.DecimalWithAggregatesFilter<"Pet"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  longitude?: Prisma.DecimalWithAggregatesFilter<"Pet"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   org_id?: Prisma.UuidWithAggregatesFilter<"Pet"> | string
 }
 
@@ -232,6 +320,10 @@ export type PetCreateInput = {
   name: string
   age: string
   size: string
+  state: string
+  city: string
+  latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
+  longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   org: Prisma.OrgCreateNestedOneWithoutPetsInput
 }
 
@@ -240,6 +332,10 @@ export type PetUncheckedCreateInput = {
   name: string
   age: string
   size: string
+  state: string
+  city: string
+  latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
+  longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   org_id: string
 }
 
@@ -248,6 +344,10 @@ export type PetUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   age?: Prisma.StringFieldUpdateOperationsInput | string
   size?: Prisma.StringFieldUpdateOperationsInput | string
+  state?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   org?: Prisma.OrgUpdateOneRequiredWithoutPetsNestedInput
 }
 
@@ -256,6 +356,10 @@ export type PetUncheckedUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   age?: Prisma.StringFieldUpdateOperationsInput | string
   size?: Prisma.StringFieldUpdateOperationsInput | string
+  state?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   org_id?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -264,6 +368,10 @@ export type PetCreateManyInput = {
   name: string
   age: string
   size: string
+  state: string
+  city: string
+  latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
+  longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   org_id: string
 }
 
@@ -272,6 +380,10 @@ export type PetUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   age?: Prisma.StringFieldUpdateOperationsInput | string
   size?: Prisma.StringFieldUpdateOperationsInput | string
+  state?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type PetUncheckedUpdateManyInput = {
@@ -279,6 +391,10 @@ export type PetUncheckedUpdateManyInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   age?: Prisma.StringFieldUpdateOperationsInput | string
   size?: Prisma.StringFieldUpdateOperationsInput | string
+  state?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   org_id?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -297,7 +413,16 @@ export type PetCountOrderByAggregateInput = {
   name?: Prisma.SortOrder
   age?: Prisma.SortOrder
   size?: Prisma.SortOrder
+  state?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
   org_id?: Prisma.SortOrder
+}
+
+export type PetAvgOrderByAggregateInput = {
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
 }
 
 export type PetMaxOrderByAggregateInput = {
@@ -305,6 +430,10 @@ export type PetMaxOrderByAggregateInput = {
   name?: Prisma.SortOrder
   age?: Prisma.SortOrder
   size?: Prisma.SortOrder
+  state?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
   org_id?: Prisma.SortOrder
 }
 
@@ -313,7 +442,16 @@ export type PetMinOrderByAggregateInput = {
   name?: Prisma.SortOrder
   age?: Prisma.SortOrder
   size?: Prisma.SortOrder
+  state?: Prisma.SortOrder
+  city?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
   org_id?: Prisma.SortOrder
+}
+
+export type PetSumOrderByAggregateInput = {
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
 }
 
 export type PetCreateNestedManyWithoutOrgInput = {
@@ -358,11 +496,23 @@ export type PetUncheckedUpdateManyWithoutOrgNestedInput = {
   deleteMany?: Prisma.PetScalarWhereInput | Prisma.PetScalarWhereInput[]
 }
 
+export type DecimalFieldUpdateOperationsInput = {
+  set?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
+}
+
 export type PetCreateWithoutOrgInput = {
   id?: string
   name: string
   age: string
   size: string
+  state: string
+  city: string
+  latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
+  longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type PetUncheckedCreateWithoutOrgInput = {
@@ -370,6 +520,10 @@ export type PetUncheckedCreateWithoutOrgInput = {
   name: string
   age: string
   size: string
+  state: string
+  city: string
+  latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
+  longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type PetCreateOrConnectWithoutOrgInput = {
@@ -406,6 +560,10 @@ export type PetScalarWhereInput = {
   name?: Prisma.StringFilter<"Pet"> | string
   age?: Prisma.StringFilter<"Pet"> | string
   size?: Prisma.StringFilter<"Pet"> | string
+  state?: Prisma.StringFilter<"Pet"> | string
+  city?: Prisma.StringFilter<"Pet"> | string
+  latitude?: Prisma.DecimalFilter<"Pet"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  longitude?: Prisma.DecimalFilter<"Pet"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   org_id?: Prisma.UuidFilter<"Pet"> | string
 }
 
@@ -414,6 +572,10 @@ export type PetCreateManyOrgInput = {
   name: string
   age: string
   size: string
+  state: string
+  city: string
+  latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
+  longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type PetUpdateWithoutOrgInput = {
@@ -421,6 +583,10 @@ export type PetUpdateWithoutOrgInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   age?: Prisma.StringFieldUpdateOperationsInput | string
   size?: Prisma.StringFieldUpdateOperationsInput | string
+  state?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type PetUncheckedUpdateWithoutOrgInput = {
@@ -428,6 +594,10 @@ export type PetUncheckedUpdateWithoutOrgInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   age?: Prisma.StringFieldUpdateOperationsInput | string
   size?: Prisma.StringFieldUpdateOperationsInput | string
+  state?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type PetUncheckedUpdateManyWithoutOrgInput = {
@@ -435,6 +605,10 @@ export type PetUncheckedUpdateManyWithoutOrgInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   age?: Prisma.StringFieldUpdateOperationsInput | string
   size?: Prisma.StringFieldUpdateOperationsInput | string
+  state?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 
@@ -444,6 +618,10 @@ export type PetSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = ru
   name?: boolean
   age?: boolean
   size?: boolean
+  state?: boolean
+  city?: boolean
+  latitude?: boolean
+  longitude?: boolean
   org_id?: boolean
   org?: boolean | Prisma.OrgDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["pet"]>
@@ -453,6 +631,10 @@ export type PetSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extension
   name?: boolean
   age?: boolean
   size?: boolean
+  state?: boolean
+  city?: boolean
+  latitude?: boolean
+  longitude?: boolean
   org_id?: boolean
   org?: boolean | Prisma.OrgDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["pet"]>
@@ -462,6 +644,10 @@ export type PetSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extension
   name?: boolean
   age?: boolean
   size?: boolean
+  state?: boolean
+  city?: boolean
+  latitude?: boolean
+  longitude?: boolean
   org_id?: boolean
   org?: boolean | Prisma.OrgDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["pet"]>
@@ -471,10 +657,14 @@ export type PetSelectScalar = {
   name?: boolean
   age?: boolean
   size?: boolean
+  state?: boolean
+  city?: boolean
+  latitude?: boolean
+  longitude?: boolean
   org_id?: boolean
 }
 
-export type PetOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "age" | "size" | "org_id", ExtArgs["result"]["pet"]>
+export type PetOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "age" | "size" | "state" | "city" | "latitude" | "longitude" | "org_id", ExtArgs["result"]["pet"]>
 export type PetInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   org?: boolean | Prisma.OrgDefaultArgs<ExtArgs>
 }
@@ -495,6 +685,10 @@ export type $PetPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
     name: string
     age: string
     size: string
+    state: string
+    city: string
+    latitude: runtime.Decimal
+    longitude: runtime.Decimal
     org_id: string
   }, ExtArgs["result"]["pet"]>
   composites: {}
@@ -924,6 +1118,10 @@ export interface PetFieldRefs {
   readonly name: Prisma.FieldRef<"Pet", 'String'>
   readonly age: Prisma.FieldRef<"Pet", 'String'>
   readonly size: Prisma.FieldRef<"Pet", 'String'>
+  readonly state: Prisma.FieldRef<"Pet", 'String'>
+  readonly city: Prisma.FieldRef<"Pet", 'String'>
+  readonly latitude: Prisma.FieldRef<"Pet", 'Decimal'>
+  readonly longitude: Prisma.FieldRef<"Pet", 'Decimal'>
   readonly org_id: Prisma.FieldRef<"Pet", 'String'>
 }
     
