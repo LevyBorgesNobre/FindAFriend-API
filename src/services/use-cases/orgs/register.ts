@@ -6,10 +6,9 @@ import { hash } from "bcryptjs";
 interface RegisterUseCaseRequest {
     email: string;
     password_hash: string;
+    cep: string;
     address: string;
     phone_number: string;
-    city: string;
-    State: string
 }
 
 interface RegisterUseCaseResponse {
@@ -27,10 +26,10 @@ constructor(
 async execute({
     email, 
     password_hash, 
+    cep,
     address, 
     phone_number, 
-    city, 
-    State} : RegisterUseCaseRequest): Promise<RegisterUseCaseResponse>{
+  } : RegisterUseCaseRequest): Promise<RegisterUseCaseResponse>{
     
     const passwordHash = await hash(password_hash, 6)
 
@@ -43,10 +42,9 @@ async execute({
     const org  = await this.orgsRepostory.create({
         email,
         password_hash: passwordHash,
+        cep,
         address,
         phone_number,
-        city,
-        State
     })
 
     return{
