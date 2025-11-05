@@ -19,10 +19,9 @@ describe("Authenticate Use Case",()=>{
         await orgsRepository.create({
         email: "johndoe@example.com",
         password_hash: String(hashSync('hassadasdahdaSenha123', 6)),
+        cep:"12312332",
         address: "Rua Exemplo,123123 123",
         phone_number: "+55asdasd11999999999",
-        city: "Santa Catarina",
-        State: "SC"
         })
        
         const { org } = await sut.execute({
@@ -37,10 +36,9 @@ describe("Authenticate Use Case",()=>{
          await orgsRepository.create({
         email: "johndoe@example.com",
         password_hash: String(hashSync('hassadasdahdaSenha123', 6)),
+        cep:"12312414",
         address: "Rua Exemplo,123123 123",
         phone_number: "+55asdasd11999999999",
-        city: "Santa Catarina",
-        State: "SC"
         })
 
          await expect(() => 
@@ -55,10 +53,9 @@ describe("Authenticate Use Case",()=>{
         await orgsRepository.create({
         email: "johndoe@example.com",
         password_hash: String(hashSync('123456', 6)),
+        cep:"14124124",
         address: "Rua Exemplo,123123 123",
         phone_number: "+55asdasd11999999999",
-        city: "Santa Catarina",
-        State: "SC"
         })
 
          await expect(() =>

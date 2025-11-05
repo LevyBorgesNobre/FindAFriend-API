@@ -24,10 +24,8 @@ model Pet {
   name      String
   age       String
   size      String
-  state     String
-  city      String
-  latitude  Decimal
-  longitude Decimal
-  org_id String @db.Uuid
-  org    Org    @relation(fields: [org_id], references: [id])
+  state     String?
+  city      String?
+  org_id    String @db.Uuid
+  org       Org    @relation(fields: [org_id], references: [id])
 }

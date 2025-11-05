@@ -88,8 +88,6 @@ export const PetScalarFieldEnum = {
   size: 'size',
   state: 'state',
   city: 'city',
-  latitude: 'latitude',
-  longitude: 'longitude',
   org_id: 'org_id'
 } as const
 
@@ -110,4 +108,12 @@ export const QueryMode = {
 } as const
 
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 

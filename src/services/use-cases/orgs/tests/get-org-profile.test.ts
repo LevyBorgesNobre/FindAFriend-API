@@ -16,10 +16,9 @@ describe(('Get Org Profile Use Case'), ()=>{
       const createOrg = await orgsRepository.create({
         email: "johndoe@example.com",
         password_hash: "hassadasdahdaSenha123",
+        cep:"12314145",
         address: "Rua Exemplo,123123 123",
         phone_number: "+55asdasd11999999999",
-        city: "Santa Catarina",
-        State: "SC"
         })
         
         const { org } = await sut.execute({
@@ -30,16 +29,15 @@ describe(('Get Org Profile Use Case'), ()=>{
     })
 
     it('should not be able to get org profile with wrong id', async()=>{
-       orgsRepository.create({
+      await orgsRepository.create({
         email: "johndoe@example.com",
         password_hash: "hassadasdahdaSenha123",
+        cep:"123123132",
         address: "Rua Exemplo,123123 123",
         phone_number: "+55asdasd11999999999",
-        city: "Santa Catarina",
-        State: "SC"
         })
 
-         expect(()=>
+       await expect(()=>
          sut.execute({
             id:"123"
          })).rejects.toBeInstanceOf(ResourceNotFoundError)

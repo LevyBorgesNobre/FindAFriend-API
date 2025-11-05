@@ -17,10 +17,9 @@ let sut:  RegisterUseCase
        const { org } = await sut.execute({
         email: "johndoe@example.com",
         password_hash: "hassadasdahdaSenha123",
+        cep:"123123123",
         address: "Rua Exemplo,123123 123",
         phone_number: "+55asdasd11999999999",
-        city: "Santa Catarina",
-        State: "SC"
        })
 
        expect(org.id).toEqual(expect.any(String))
@@ -30,10 +29,9 @@ let sut:  RegisterUseCase
      const { org }  = await sut.execute({
         email: "johndoe@example.com",
         password_hash: "hassadasdahdaSenha123",
+        cep:"4214124",
         address: "Rua Exemplo,123123 123",
         phone_number: "+55asdasd11999999999",
-        city: "Santa Catarina",
-        State: "SC"
       })
 
         const isPasswordCorrectlyHashed = await compare(
@@ -48,20 +46,18 @@ let sut:  RegisterUseCase
         await sut.execute({
         email: "johndoe@example.com",
         password_hash: "hassadasdahdaSenha123",
+        cep:"1231214",
         address: "Rua Exemplo,123123 123",
         phone_number: "+55asdasd11999999999",
-        city: "Santa Catarina",
-        State: "SC"
        })
 
         await expect(() => 
           sut.execute({
             email: "johndoe@example.com",
             password_hash: "hassadasdahdaSenha123",
+            cep:"12312312",
             address: "Rua Exemplo,123123 123",
             phone_number: "+55asdasd11999999999",
-            city: "Santa Catarina",
-            State: "SC"
           }),
         ).rejects.toBeInstanceOf(OrgAlreadyExistsError)
     })

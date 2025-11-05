@@ -28,10 +28,9 @@ export class InMemoryOrgRepository {
                id: crypto.randomUUID(),
                email: data.email,
                password_hash: data.password_hash,
+               cep: data.cep,
                address: data.address,
                phone_number: data.phone_number,
-               city: data.city,
-               State: data.State,
                created_at: new Date(),
           }
           this.orgs.push(org)
