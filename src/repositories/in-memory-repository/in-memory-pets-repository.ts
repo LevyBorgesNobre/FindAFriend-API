@@ -1,5 +1,5 @@
 import { Pet } from "@/generated/client";
-import { PetCreateInput, PetUncheckedCreateInput } from "@/generated/models";
+import { PetUncheckedCreateInput } from "@/generated/models";
 import { PetsRepository } from "../pets-repository";
 import { randomUUID } from "crypto";
 

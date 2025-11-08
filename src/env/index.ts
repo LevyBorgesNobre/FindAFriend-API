@@ -5,6 +5,11 @@ import { z } from 'zod'
 const envSchema = z.object({
     NODE_ENV: z.enum(['dev', 'test', 'production']).default('dev'),
     PORT: z.coerce.number().default(1024),
+    API_KEY:z.string()
+  .min(20, "A chave é muito curta")
+  .max(50, "A chave é muito longa")
+  .regex(/^[A-Za-z0-9]+$/, "A chave deve conter apenas letras e números")
+
 })
 
 const _env = envSchema.safeParse(process.env)

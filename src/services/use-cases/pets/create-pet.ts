@@ -5,9 +5,11 @@ import { ResourceNotFoundError } from "@/services/erros/resource-not-found";
 
 interface CreatePetUseCaseRequest {
     orgId: string;
-    name: string;
-    size: string;
-    age: string;
+    name:  string;
+    size:  string;
+    state: string;
+    city:  string;
+    age:   string;
 }
 
 interface CreatePetUseCaseResponse {
@@ -24,6 +26,8 @@ export class CreatePetUseCase {
         orgId,
         name, 
         size,
+        state,
+        city,
         age
     }: CreatePetUseCaseRequest): Promise<CreatePetUseCaseResponse>{
         const org = await this.orgRepository.findById(orgId)
@@ -36,6 +40,8 @@ export class CreatePetUseCase {
             name,
             size,
             age,
+            state,
+            city,
             org_id: orgId
         })
 
