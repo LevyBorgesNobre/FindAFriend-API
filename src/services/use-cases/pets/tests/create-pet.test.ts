@@ -28,7 +28,9 @@ describe("Create Pet Use Case", ()=>{
         orgId: org.id,
         name:"Rex",
         size: "medium",
-        age: "2 years"
+        age: "2 years",
+        state:"RJ",
+        city:"Rio de Janeiro"
        })
 
        expect(pet.id).toEqual(expect.any(String))
@@ -42,7 +44,9 @@ describe("Create Pet Use Case", ()=>{
          orgId: invalid_id,
          name:"rex",
          size:"medium",
-         age:"3"
+         age:"3",
+         state:"RJ",
+         city:"Rio de Janeiro"
         })
       ).rejects.toBeInstanceOf(ResourceNotFoundError)
     })

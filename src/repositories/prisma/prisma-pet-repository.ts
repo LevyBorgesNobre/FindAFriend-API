@@ -1,5 +1,5 @@
 import { Pet } from "@/generated/client";
-import { PetCreateInput, PetUncheckedCreateInput } from "@/generated/models";
+import { PetUncheckedCreateInput } from "@/generated/models";
 import { PetsRepository } from "../pets-repository";
 import { prisma } from "@/lib/prisma"
 
@@ -10,4 +10,18 @@ export class PrismaPetRepositoy implements PetsRepository {
             })
             return pet
     }
+
+  async findByName(data: string): Promise<Pet[]> {
+      const pet = await prisma.pet.findMany({
+        where:{
+         name:{
+          contains:data,
+          mode: "insensitive"
+         }
+        }
+      })
+
+      return pet
+    }
+
 }

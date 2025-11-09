@@ -22,4 +22,9 @@ export class InMemoryPetRepository implements PetsRepository{
         return pet
 
     }
+
+
+   async findByName(data: string): Promise<Pet[]> {
+        return this.pets.filter((pet)=> pet.name.includes(data))
+    }
 }
