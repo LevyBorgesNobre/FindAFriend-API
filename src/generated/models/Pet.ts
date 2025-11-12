@@ -163,8 +163,8 @@ export type PetGroupByOutputType = {
   name: string
   age: string
   size: string
-  state: string | null
-  city: string | null
+  state: string
+  city: string
   org_id: string
   _count: PetCountAggregateOutputType | null
   _min: PetMinAggregateOutputType | null
@@ -194,8 +194,8 @@ export type PetWhereInput = {
   name?: Prisma.StringFilter<"Pet"> | string
   age?: Prisma.StringFilter<"Pet"> | string
   size?: Prisma.StringFilter<"Pet"> | string
-  state?: Prisma.StringNullableFilter<"Pet"> | string | null
-  city?: Prisma.StringNullableFilter<"Pet"> | string | null
+  state?: Prisma.StringFilter<"Pet"> | string
+  city?: Prisma.StringFilter<"Pet"> | string
   org_id?: Prisma.UuidFilter<"Pet"> | string
   org?: Prisma.XOR<Prisma.OrgScalarRelationFilter, Prisma.OrgWhereInput>
 }
@@ -205,8 +205,8 @@ export type PetOrderByWithRelationInput = {
   name?: Prisma.SortOrder
   age?: Prisma.SortOrder
   size?: Prisma.SortOrder
-  state?: Prisma.SortOrderInput | Prisma.SortOrder
-  city?: Prisma.SortOrderInput | Prisma.SortOrder
+  state?: Prisma.SortOrder
+  city?: Prisma.SortOrder
   org_id?: Prisma.SortOrder
   org?: Prisma.OrgOrderByWithRelationInput
 }
@@ -219,8 +219,8 @@ export type PetWhereUniqueInput = Prisma.AtLeast<{
   name?: Prisma.StringFilter<"Pet"> | string
   age?: Prisma.StringFilter<"Pet"> | string
   size?: Prisma.StringFilter<"Pet"> | string
-  state?: Prisma.StringNullableFilter<"Pet"> | string | null
-  city?: Prisma.StringNullableFilter<"Pet"> | string | null
+  state?: Prisma.StringFilter<"Pet"> | string
+  city?: Prisma.StringFilter<"Pet"> | string
   org_id?: Prisma.UuidFilter<"Pet"> | string
   org?: Prisma.XOR<Prisma.OrgScalarRelationFilter, Prisma.OrgWhereInput>
 }, "id">
@@ -230,8 +230,8 @@ export type PetOrderByWithAggregationInput = {
   name?: Prisma.SortOrder
   age?: Prisma.SortOrder
   size?: Prisma.SortOrder
-  state?: Prisma.SortOrderInput | Prisma.SortOrder
-  city?: Prisma.SortOrderInput | Prisma.SortOrder
+  state?: Prisma.SortOrder
+  city?: Prisma.SortOrder
   org_id?: Prisma.SortOrder
   _count?: Prisma.PetCountOrderByAggregateInput
   _max?: Prisma.PetMaxOrderByAggregateInput
@@ -246,8 +246,8 @@ export type PetScalarWhereWithAggregatesInput = {
   name?: Prisma.StringWithAggregatesFilter<"Pet"> | string
   age?: Prisma.StringWithAggregatesFilter<"Pet"> | string
   size?: Prisma.StringWithAggregatesFilter<"Pet"> | string
-  state?: Prisma.StringNullableWithAggregatesFilter<"Pet"> | string | null
-  city?: Prisma.StringNullableWithAggregatesFilter<"Pet"> | string | null
+  state?: Prisma.StringWithAggregatesFilter<"Pet"> | string
+  city?: Prisma.StringWithAggregatesFilter<"Pet"> | string
   org_id?: Prisma.UuidWithAggregatesFilter<"Pet"> | string
 }
 
@@ -256,8 +256,8 @@ export type PetCreateInput = {
   name: string
   age: string
   size: string
-  state?: string | null
-  city?: string | null
+  state: string
+  city: string
   org: Prisma.OrgCreateNestedOneWithoutPetsInput
 }
 
@@ -266,8 +266,8 @@ export type PetUncheckedCreateInput = {
   name: string
   age: string
   size: string
-  state?: string | null
-  city?: string | null
+  state: string
+  city: string
   org_id: string
 }
 
@@ -276,8 +276,8 @@ export type PetUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   age?: Prisma.StringFieldUpdateOperationsInput | string
   size?: Prisma.StringFieldUpdateOperationsInput | string
-  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   org?: Prisma.OrgUpdateOneRequiredWithoutPetsNestedInput
 }
 
@@ -286,8 +286,8 @@ export type PetUncheckedUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   age?: Prisma.StringFieldUpdateOperationsInput | string
   size?: Prisma.StringFieldUpdateOperationsInput | string
-  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   org_id?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -296,8 +296,8 @@ export type PetCreateManyInput = {
   name: string
   age: string
   size: string
-  state?: string | null
-  city?: string | null
+  state: string
+  city: string
   org_id: string
 }
 
@@ -306,8 +306,8 @@ export type PetUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   age?: Prisma.StringFieldUpdateOperationsInput | string
   size?: Prisma.StringFieldUpdateOperationsInput | string
-  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type PetUncheckedUpdateManyInput = {
@@ -315,8 +315,8 @@ export type PetUncheckedUpdateManyInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   age?: Prisma.StringFieldUpdateOperationsInput | string
   size?: Prisma.StringFieldUpdateOperationsInput | string
-  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   org_id?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -402,17 +402,13 @@ export type PetUncheckedUpdateManyWithoutOrgNestedInput = {
   deleteMany?: Prisma.PetScalarWhereInput | Prisma.PetScalarWhereInput[]
 }
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
-}
-
 export type PetCreateWithoutOrgInput = {
   id?: string
   name: string
   age: string
   size: string
-  state?: string | null
-  city?: string | null
+  state: string
+  city: string
 }
 
 export type PetUncheckedCreateWithoutOrgInput = {
@@ -420,8 +416,8 @@ export type PetUncheckedCreateWithoutOrgInput = {
   name: string
   age: string
   size: string
-  state?: string | null
-  city?: string | null
+  state: string
+  city: string
 }
 
 export type PetCreateOrConnectWithoutOrgInput = {
@@ -458,8 +454,8 @@ export type PetScalarWhereInput = {
   name?: Prisma.StringFilter<"Pet"> | string
   age?: Prisma.StringFilter<"Pet"> | string
   size?: Prisma.StringFilter<"Pet"> | string
-  state?: Prisma.StringNullableFilter<"Pet"> | string | null
-  city?: Prisma.StringNullableFilter<"Pet"> | string | null
+  state?: Prisma.StringFilter<"Pet"> | string
+  city?: Prisma.StringFilter<"Pet"> | string
   org_id?: Prisma.UuidFilter<"Pet"> | string
 }
 
@@ -468,8 +464,8 @@ export type PetCreateManyOrgInput = {
   name: string
   age: string
   size: string
-  state?: string | null
-  city?: string | null
+  state: string
+  city: string
 }
 
 export type PetUpdateWithoutOrgInput = {
@@ -477,8 +473,8 @@ export type PetUpdateWithoutOrgInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   age?: Prisma.StringFieldUpdateOperationsInput | string
   size?: Prisma.StringFieldUpdateOperationsInput | string
-  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type PetUncheckedUpdateWithoutOrgInput = {
@@ -486,8 +482,8 @@ export type PetUncheckedUpdateWithoutOrgInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   age?: Prisma.StringFieldUpdateOperationsInput | string
   size?: Prisma.StringFieldUpdateOperationsInput | string
-  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type PetUncheckedUpdateManyWithoutOrgInput = {
@@ -495,8 +491,8 @@ export type PetUncheckedUpdateManyWithoutOrgInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   age?: Prisma.StringFieldUpdateOperationsInput | string
   size?: Prisma.StringFieldUpdateOperationsInput | string
-  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 
@@ -565,8 +561,8 @@ export type $PetPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
     name: string
     age: string
     size: string
-    state: string | null
-    city: string | null
+    state: string
+    city: string
     org_id: string
   }, ExtArgs["result"]["pet"]>
   composites: {}

@@ -24,4 +24,21 @@ export class PrismaPetRepositoy implements PetsRepository {
       return pet
     }
 
+    async findByLocation(state: string, city: string): Promise<Pet[]> {
+      const pet = await prisma.pet.findMany({
+        where:{
+          state:{
+            contains: state,
+            mode: "insensitive"
+          },
+          city:{
+            contains:city,
+            mode: "insensitive"
+          }
+        }
+      })
+
+      return pet
+    }
+
 }

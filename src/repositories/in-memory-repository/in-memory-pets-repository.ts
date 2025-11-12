@@ -13,8 +13,8 @@ export class InMemoryPetRepository implements PetsRepository{
             name: data.name,
             size: data.size,
             age: data.age,
-            city:null,
-            state:null,
+            city:data.city,
+            state:data.state,
             org_id: data.org_id
         }
 
@@ -26,5 +26,13 @@ export class InMemoryPetRepository implements PetsRepository{
 
    async findByName(data: string): Promise<Pet[]> {
         return this.pets.filter((pet)=> pet.name.includes(data))
+    }
+
+    async findByLocation(state: string, city: string): Promise<Pet[]> {
+        const petLocation = 
+        this.pets.filter((pet)=> pet.state?.includes(state)) &&
+        this.pets.filter((pet)=> pet.city?.includes(city))
+        
+        return petLocation
     }
 }
