@@ -22,7 +22,7 @@ const config: runtime.GetPrismaClientConfig = {
       "value": "prisma-client"
     },
     "output": {
-      "value": "/home/levyborges/Documentos/FindAFriend-API/src/generated",
+      "value": "/home/levyborges/Documentos/FindAFriend-API-1/src/generated",
       "fromEnvVar": null
     },
     "config": {
@@ -36,7 +36,7 @@ const config: runtime.GetPrismaClientConfig = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/home/levyborges/Documentos/FindAFriend-API/prisma/schema.prisma",
+    "sourceFilePath": "/home/levyborges/Documentos/FindAFriend-API-1/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativePath": "../../prisma",
