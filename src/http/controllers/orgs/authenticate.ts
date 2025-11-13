@@ -14,12 +14,18 @@ export async function authenticate(req: FastifyRequest, reply: FastifyReply) {
     try {
         const authenicateOrg = makeAuthenticateUseCase()
 
-       await authenicateOrg.execute({
+    const { org } = await authenicateOrg.execute({
             email,
             password_hash
         })
 
-        return reply.status(200).send({message: "Orgnization authenticated sucessfully"})
+    const token = await reply.jwtSign({}, {
+      sign:{
+        sub: org.id
+      }
+    })
+
+        return reply.status(200).send({token})
     } catch (error) {
         if (error instanceof OrgInvalidCredentialsError ){
             return reply.status(401).send({message: `${error.message}`})
