@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  api-solid-pg:
+    image: bitnami/postgresql
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRESQL_USERNAME=FindAFriend
+      - POSTGRESQL_PASSWORD=10984
+      - POSTGRESQL_DATABASE=findafriend
