@@ -10,4 +10,4 @@ export function orgsRoutes(app: FastifyInstance){
   app.get('/orgs/profile',{
     preHandler:[verifyJWT]
   }, profile)
-}
+}   
